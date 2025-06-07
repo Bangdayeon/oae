@@ -1,7 +1,8 @@
 "use client";
 
 import { useModalStore } from "@/stores/modalStore";
-import Counter from "./Counter";
+import Counter from "./Counter/Counter";
+import Todo from "./Todo/Todo";
 
 export default function ModalProvider() {
   const { isOpen, type, close } = useModalStore();
@@ -11,6 +12,8 @@ export default function ModalProvider() {
   switch (type) {
     case "counter":
       return <Counter onClose={close} />;
+    case "todo":
+      return <Todo onClose={close} />;
     default:
       return null;
   }

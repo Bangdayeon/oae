@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type ModalType = "counter" | "memo" | "settings" | null;
+type ModalType = "counter" | "todo" | "settings" | null;
 
 interface ModalState {
   type: ModalType;

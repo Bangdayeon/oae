@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Button } from "./Button";
+import { Button } from "../Button";
 
 interface CounterModalProps {
   onClose: () => void;
@@ -31,7 +31,7 @@ const Counter = ({ onClose }: CounterModalProps) => {
         </div>
         <Button
           size="sm"
-          className="absolute bottom-2 left-2 px-3"
+          className="absolute bottom-2 left-2"
           onClick={onClose}
         >
           x

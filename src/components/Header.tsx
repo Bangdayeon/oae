@@ -13,6 +13,7 @@ const Header = () => {
           <nav className="md:flex items-center space-x-1">
             <Button>📝</Button>
             <Button onClick={() => open("counter")}>🔢</Button>
+            <Button onClick={() => open("todo")}>📄</Button>
           </nav>
         </div>
         <Button>MENU</Button>
