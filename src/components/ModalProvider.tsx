@@ -3,18 +3,24 @@
 import { useModalStore } from "@/stores/modalStore";
 import Counter from "./Counter/Counter";
 import Todo from "./Todo/Todo";
+import ModalWrapper from "./ModalWrapper";
 
 export default function ModalProvider() {
   const { isOpen, type, close } = useModalStore();
 
   if (!isOpen) return null;
 
+  let content;
   switch (type) {
     case "counter":
-      return <Counter onClose={close} />;
+      content = <Counter />;
+      break;
     case "todo":
-      return <Todo onClose={close} />;
+      content = <Todo />;
+      break;
     default:
       return null;
   }
+
+  return <ModalWrapper onClose={close}>{content}</ModalWrapper>;
 }
