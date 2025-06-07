@@ -30,7 +30,7 @@ const Todo = () => {
           +
         </Button>
       </div>
-      <div className="w-full space-y-2 p-2">
+      <div className="w-full space-y-2 p-2 max-h-70 overflow-y-scroll custom-scroll-hide">
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}
