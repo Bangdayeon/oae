@@ -11,6 +11,6 @@ Next.js, TypeScript, TailWind, Zustand 등의 도구들을 실습하며
 - [x] [Counter : React의 State, Props 개념 이해](https://ldd6cr-adness.tistory.com/315)
 - [x] [Todo : 전역 데이터 다루기](https://ldd6cr-adness.tistory.com/316)
 - [x] [Modal 리팩토링 : 상태관리에 대한 이해 및 tailwindcss 커스텀 스타일링](https://ldd6cr-adness.tistory.com/317)
-- [ ] Storybook 리팩토링 - Counter
+- [x] Storybook 리팩토링 - Counter
 - [ ] Storybook 리팩토링 - Todo
 - [ ] Memo
