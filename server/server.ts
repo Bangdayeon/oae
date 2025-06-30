@@ -2,12 +2,13 @@ import express from 'express';
 import axios from 'axios';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import qs from 'qs';
 
 dotenv.config();
 const app = express();
 app.use(cors());
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.get('/api/auth/google', async (req, res) => {
     const redirect_url: string = process.env.REDIRECT_URL || '';
@@ -31,16 +32,19 @@ app.get('/api/auth/callback/google', async (req, res) => {
 
     try {
         // 1. access_token 요청
-        const tokenResponse = await axios.post('https://oauth2.googleapis.com/token', {
+        const requestBody = qs.stringify({
             code,
             client_id: process.env.GOOGLE_CLIENT_ID || '',
             client_secret: process.env.GOOGLE_CLIENT_SECRET || '',
             redirect_uri: process.env.REDIRECT_URL || '',
             grant_type: 'authorization_code',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
         });
+
+        const tokenResponse = await axios.post(
+            'https://oauth2.googleapis.com/token',
+            requestBody,
+            {headers: {'Content-Type': 'application/x-www-form-urlencoded'} }
+        );
 
         const {access_token, id_token} = tokenResponse.data;
 
