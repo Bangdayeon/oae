@@ -3,6 +3,7 @@
 import { useModalStore } from "@/stores/modalStore";
 import Counter from "./Counter/Counter";
 import Todo from "./Todo/Todo";
+import Login from "./Login/Login";
 import ModalWrapper from "./ModalWrapper";
 
 export default function ModalProvider() {
@@ -17,6 +18,9 @@ export default function ModalProvider() {
       break;
     case "todo":
       content = <Todo />;
+      break;
+    case "login":
+      content = <Login />;
       break;
     default:
       return null;

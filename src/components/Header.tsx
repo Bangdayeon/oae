@@ -16,7 +16,10 @@ const Header = () => {
             <Button onClick={() => open("todo")}>📄</Button>
           </nav>
         </div>
-        <Button>MENU</Button>
+        <nav className="hidden md:flex space-x-4">
+          <Button>MENU</Button>
+          <Button onClick={()=>open("login")}>👤</Button>
+        </nav>
       </div>
     </div>
   );
