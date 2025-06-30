@@ -3,12 +3,16 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import qs from 'qs';
+import jwt from 'jsonwebtoken';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 const app = express();
 app.use(cors());
+app.use(cookieParser());
 
 const PORT = process.env.PORT || 3001;
+const JWT_SECRET = process.env.JWT_SECRET || 'default_jwt_secret_key';
 
 app.get('/api/auth/google', async (req, res) => {
     const redirect_url: string = process.env.REDIRECT_URL || '';
@@ -55,7 +59,31 @@ app.get('/api/auth/callback/google', async (req, res) => {
             },
         });
 
-        res.json(userInfoResponse.data);
+        const userData = userInfoResponse.data;
+
+        // 3. JWT 생성
+        const token = jwt.sign(
+            {
+                sub: userData.sub,
+                email: userData.email,
+                name: userData.name,
+                picture: userData.picture,
+            },
+            JWT_SECRET,
+            { expiresIn: '1h' }
+        );
+
+        // 4. 쿠키에 JWT 설정
+        res.cookie('access_token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // HTTPS 환경에서만 전송
+            sameSite: 'lax',    // or 'Strict', or 'None'
+            maxAge: 3600 * 1000, // 1 hour
+        });
+        
+        // 5. 사용자 정보와 JWT 반환(redirect)
+        res.redirect('http://localhost:3000/');
+
     } catch (error) {
         console.error(error);
         let errorMessage = 'Unknown error';
