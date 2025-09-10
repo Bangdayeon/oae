@@ -4,6 +4,7 @@ import { useModalStore } from "@/stores/modalStore";
 import Counter from "./Counter/Counter";
 import Todo from "./Todo/Todo";
 import Login from "./Login/Login";
+import RPSApp from "./RPSApp/RPSApp";
 import ModalWrapper from "./ModalWrapper";
 
 export default function ModalProvider() {
@@ -21,6 +22,9 @@ export default function ModalProvider() {
       break;
     case "login":
       content = <Login />;
+      break;
+    case "rps":
+      content = <RPSApp />;
       break;
     default:
       return null;

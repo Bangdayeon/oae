@@ -20,7 +20,7 @@ const ModalWrapper = ({
       onClick={onClose}
     >
       <div
-        className="flex flex-col bg-white p-4 rounded-lg w-full max-w-sm"
+        className="flex flex-col inline-block bg-white p-4 rounded-lg w-full max-w-[90vw]"
         onClick={(e) => e.stopPropagation()}
       >
         {showCloseButton && (

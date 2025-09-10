@@ -3,6 +3,10 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    'bg-[url(/assets/yellow.svg)]',
+    'bg-[url(/assets/yellow-win.svg)]',
+  ],
   theme: {
     extend: {},
   },

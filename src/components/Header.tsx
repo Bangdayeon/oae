@@ -14,6 +14,7 @@ const Header = () => {
             <Button>📝</Button>
             <Button onClick={() => open("counter")}>🔢</Button>
             <Button onClick={() => open("todo")}>📄</Button>
+            <Button onClick={() => open("rps")}>✊</Button>
           </nav>
         </div>
         <nav className="hidden md:flex space-x-4">
